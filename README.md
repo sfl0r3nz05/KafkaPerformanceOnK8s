@@ -14,6 +14,7 @@
 
 1. Install [kubectl](./documentation/kubectl.md)
 2. Install [minikube](./documentation/minikube.md)
+3. Install [helm](./)
 
 ## Deploy a kafka env based on k8s
 
@@ -23,41 +24,23 @@
     kubectl create namespace kafka
     ```
 
-2. Deploy Kafka cluster
+2. Clone the conflueninc repo:
 
     ```console
-    kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
+    git clone https://github.com/confluentinc/cp-helm-charts.git
     ```
 
-3. After that we feed Strimzi with a simple Custom Resource, which will then give you a small persistent Apache Kafka Cluster with one node each for Apache Zookeeper and Apache Kafka:
+3. Go into the directory
 
     ```console
-    kubectl apply -f https://strimzi.io/examples/latest/kafka/kafka-persistent-single.yaml -n kafka
+    cd ./cp-helm-charts
     ```
 
-4. The above command might timeout if you’re downloading images over a slow connection. If that happens you can always run it again.
+4. Deploy Kafka cluster
 
     ```console
-    kubectl wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka
+    helm install confluentinc . -n kafka
     ```
-
-### Basic Test of Kafka Cluster
-
-1. Set a producer
-
-    ```console
-    kubectl -n kafka run kafka-producer -ti --image=quay.io/strimzi/kafka:0.31.1-kafka-3.2.3 --rm=true --restart=Never -- bin/kafka-console-producer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic
-    ```
-
-2. Set a consumer
-
-    ```console
-    kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.31.1-kafka-3.2.3 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic my-topic --from-beginning
-    ```
-
-3. Send messages from *producer* to *consumer*:
-
-    ![img](img/testkafka.png)
 
 ### Performance Tests
 
