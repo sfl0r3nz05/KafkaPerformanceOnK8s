@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-client
+  labels:
+    app: kafka-examples
+    purpose: examples
+    type: client
+spec:
+  containers:
+  - name: kafka-client
+    image: confluentinc/cp-server:7.0.1
+    command:
+      - sh
+      - -c
+      - "exec tail -f /dev/null"
+    env:
+      - name: BOOTSTRAP_SERVERS
+        value: PLAINTEXT://my-cluster-kafka-bootstrap:9092
+    resources:
+        limits:
+          cpu: '1'
+          memory: 1Gi
+        requests:
+          cpu: '1'
+          memory: 1Gi

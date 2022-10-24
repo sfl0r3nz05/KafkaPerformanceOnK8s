@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-producer-fixed-multiple
+  labels:
+    app: kafka-examples
+    purpose: examples
+    type: performance
+spec:
+  ttlSecondsAfterFinished: 300
+  completionMode: Indexed
+  completions: 3
+  parallelism: 3
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: kafka-client
+          image: confluentinc/cp-server:7.0.1
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: PLAINTEXT://kstrm-cp-kafka-headless:9092
+          command:
+            - sh
+            - -c
+            - "kafka-producer-perf-test \
+               --topic ssl-perf-test \
+               --throughput 10000 \
+               --num-records 5000000 \
+               --record-size 1000 \
+               --producer-props acks=all \
+                bootstrap.servers=$BOOTSTRAP_SERVERS \
+                buffer.memory=67108864 \
+                batch.size=64000
+               --producer.config $CONFIG_PATH"
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: '1'
+              memory: 1Gi
+      restartPolicy: Never

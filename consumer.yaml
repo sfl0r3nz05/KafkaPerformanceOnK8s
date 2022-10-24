@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-consumer-client
+  labels:
+    app: kafka-examples
+    purpose: examples
+    type: performance
+spec:
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: kafka-client
+          image: confluentinc/cp-server:7.0.1
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: PLAINTEXT://kstrm-cp-kafka-headless:9092
+          command:
+            - sh
+            - -c
+            - "kafka-consumer-perf-test \
+               --topic ssl-perf-test \
+               --broker-list $BOOTSTRAP_SERVERS \
+               --from-latest \
+               --messages 5000000 \
+               --consumer.config $CONFIG_PATH \
+               --group $HOSTNAME"
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: '1'
+              memory: 1Gi
+      restartPolicy: Never

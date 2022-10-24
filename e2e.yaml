@@ -1,0 +1,43 @@
+#  /**
+#    * This class records the average end to end latency for a single message to travel through Kafka
+#    *
+#    * broker_list = location of the bootstrap broker for both the producer and the consumer
+#    * num_messages = # messages to send
+#    * producer_acks = See ProducerConfig.ACKS_DOC
+#    * message_size_bytes = size of each message in bytes
+#    *
+#    * e.g. [localhost:9092 test 10000 1 20]
+#  */
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-e2e-client
+  labels:
+    app: kafka-examples
+    purpose: examples
+    type: performance
+spec:
+  ttlSecondsAfterFinished: 300
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: kafka-client
+          image: confluentinc/cp-server:7.0.1
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: PLAINTEXT://kstrm-cp-kafka-headless:9092
+          command:
+            - sh
+            - -c
+            - "kafka-run-class kafka.tools.EndToEndLatency \
+               $BOOTSTRAP_SERVERS \
+               ssl-perf-test 50000 all 1000 $CONFIG_PATH"
+          resources:
+            limits:
+              cpu: '1'
+              memory: 1Gi
+            requests:
+              cpu: '1'
+              memory: 1Gi
+      restartPolicy: Never
