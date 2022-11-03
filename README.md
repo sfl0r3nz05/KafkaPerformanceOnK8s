@@ -69,7 +69,7 @@ It is possible to create multiple scenarios considering the variable load, messa
 3. Create perf testing topic
 
     ```console
-    kubectl exec -it kafka-client -n kafka -- kafka-topics --bootstrap-server $KAFKA --create --topic ssl-perf-test --partitions 6 --replication-factor 3 --config retention.ms=1800000 --config min.insync.replicas=2 --command-config /etc/kafka/config/client.properties
+    kubectl exec -it kafka-client -n kafka -- kafka-topics --bootstrap-server $KAFKA --create --topic ssl-perf-test --partitions 6 --replication-factor 3 --config retention.ms=1800000 --config min.insync.replicas=2 --command-config /etc/kafka/config/server.properties
     ```
 
 ### Test 1: Single producer throughput using TLS.
