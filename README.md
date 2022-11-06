@@ -9,6 +9,8 @@
     - [Test 3: Single producer and consumer throughput.](#test-3-single-producer-and-consumer-throughput)
     - [Test 4: Multiple producer and single consumer throughput.](#test-4-multiple-producer-and-single-consumer-throughput)
     - [Test 5: End to End Latency.](#test-5-end-to-end-latency)
+    
+> This repo is based on the contribution proposed by [im-pratham](https://github.com/im-pratham) in this [medium article](https://towardsdev.com/performance-testing-your-kubernetes-kafka-cluster-95f6e7d8dfc5).
 
 ## Deploy a demo cluster
 
