@@ -30,8 +30,7 @@ spec:
                --from-latest \
                --messages 5000000 \
                --consumer.config /etc/kafka/consumer.properties \
-               --group $HOSTNAME \
-               --timeout 9000000"
+               --group $HOSTNAME"
           resources:
             limits:
               cpu: '1'

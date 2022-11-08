@@ -177,7 +177,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl logs -f $producer -n kafka
     ```
 
-7. Results of: [Single Producer](./ExperimentResults/single-producer-to-consumer.txt), [Single Consumer](./ExperimentResults/single-consumer-to-producer.txt)
+7. Results of: [Single Producer](./ExperimentResults/single-producer-to-consumer.txt), [Single Consumer](./ExperimentResults/single-consumer-to-producer.txt).
 
 ### Test 4: Multiple producer and single consumer throughput.
 
