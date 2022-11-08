@@ -86,14 +86,16 @@ It is possible to create multiple scenarios considering the variable load, messa
 2. Collect information
 
     ```console
-    producer=$(kubectl get pods -n kafka --selector=job-name=kafka-single-producer-client --output=jsonpath='{.items[*].metadata.name}')
+    producer=$(kubectl get pods -n kafka --selector=job-name=kafka-single-producer-client --output=jsonpath='{.items[0].metadata.name}')
     ```
+
+3. Visualize logs
 
     ```console
     kubectl logs -f $producer -n kafka
     ```
 
-3. Results: [Test Single Producer](./ExperimentResults/single-producer.txt)
+4. Results of: [Test Single Producer](./ExperimentResults/single-producer.txt)
 
 ### Test 2: Multiple producer throughput using TLS.
 
@@ -103,15 +105,35 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl apply -f multiple-producer.yaml -n kafka
     ```
 
-2. Collect information
+2. Collect information form 3 producers deployed
 
     ```console
-    $producer=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[*].metadata.name}')
+    producer1=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[0].metadata.name}')
     ```
 
     ```console
-    kubectl logs -f $producer -n kafka
+    producer2=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[0].metadata.n$    
     ```
+
+    ```console
+    producer3=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[0].metadata.n$    
+    ```
+
+3. Visualize logs
+
+    ```console
+    kubectl logs -f $producer1 -n kafka
+    ```
+
+    ```console
+    kubectl logs -f $producer2 -n kafka
+    ```
+
+    ```console
+    kubectl logs -f $producer3 -n kafka
+    ```
+
+4. Results of: [Multiple Producer 1](./ExperimentResults/multiple-producer1.txt) [Multiple Producer 2](./ExperimentResults/multiple-producer2.txt) [Test Multiple Producer 3](./ExperimentResults/multiple-producer3.txt)
 
 ### Test 3: Single producer and consumer throughput.
 
