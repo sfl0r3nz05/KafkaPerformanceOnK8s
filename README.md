@@ -9,7 +9,8 @@
     - [Test 3: Single producer and consumer throughput.](#test-3-single-producer-and-consumer-throughput)
     - [Test 4: Multiple producer and single consumer throughput.](#test-4-multiple-producer-and-single-consumer-throughput)
     - [Test 5: End to End Latency.](#test-5-end-to-end-latency)
-    
+  - [Troubleshootings](troubleshootings)
+
 > This repo is based on the contribution proposed by [im-pratham](https://github.com/im-pratham) in this [medium article](https://towardsdev.com/performance-testing-your-kubernetes-kafka-cluster-95f6e7d8dfc5).
 
 ## Deploy a demo cluster
@@ -57,21 +58,21 @@ It is possible to create multiple scenarios considering the variable load, messa
 1. Preparing env
 
     ```console
-    KHOST=$(kubectl get svc -n kafka -o jsonpath="{.items[0].metadata.name}")
-    KPORT=$(kubectl get svc -n kafka -o jsonpath="{.items[0].spec.ports[1].port}")
+    KHOST=$(kubectl get svc -n kafka -o jsonpath="{.items[1].metadata.name}")
+    KPORT=$(kubectl get svc -n kafka -o jsonpath="{.items[1].spec.ports[1].port}")
     export KAFKA=$KHOST:$KPORT
     ```
 
 2. Create kafka-client
 
-    ```console  
+    ```console
     kubectl apply -f kafka-client.yaml -n kafka
     ```
 
 3. Create perf testing topic
 
     ```console
-    kubectl exec -it kafka-client -n kafka -- kafka-topics --bootstrap-server $KAFKA --create --topic ssl-perf-test --partitions 6 --replication-factor 3 --config retention.ms=1800000 --config min.insync.replicas=2 --command-config /etc/kafka/config/server.properties
+    kubectl exec -it kafka-client -n kafka -- kafka-topics --bootstrap-server $KAFKA --create --topic ssl-perf-test --partitions 6 --replication-factor 3 --config retention.ms=1800000 --config min.insync.replicas=2 --command-config /etc/kafka/config/producer.properties
     ```
 
 ### Test 1: Single producer throughput using TLS.
@@ -195,3 +196,17 @@ It is possible to create multiple scenarios considering the variable load, messa
     ```console
     kubectl logs -f $e2e -n kafka
     ```
+
+## Troubleshootings
+
+When a test is re-launched, it must be verified that the configmap has not been previously created:
+
+```console
+kubectl get configmap kafka-single-producer-perf-script -n kafka
+```
+
+If it has been created, it must be deleted:
+
+```console
+kubectl delete configmap kafka-single-producer-perf-script -n kafka
+```
