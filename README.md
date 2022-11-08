@@ -112,11 +112,11 @@ It is possible to create multiple scenarios considering the variable load, messa
     ```
 
     ```console
-    producer2=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[0].metadata.n$    
+    producer2=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[1].metadata.n$    
     ```
 
     ```console
-    producer3=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[0].metadata.n$    
+    producer3=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[2].metadata.n$    
     ```
 
 3. Visualize logs
@@ -133,7 +133,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl logs -f $producer3 -n kafka
     ```
 
-4. Results of: [Multiple Producer 1](./ExperimentResults/multiple-producer1.txt) [Multiple Producer 2](./ExperimentResults/multiple-producer2.txt) [Test Multiple Producer 3](./ExperimentResults/multiple-producer3.txt)
+4. Results of: [Multiple Producer 1](./ExperimentResults/multiple-producer-1.txt), [Multiple Producer 2](./ExperimentResults/multiple-producer-2.txt) and [Test Multiple Producer 3](./ExperimentResults/multiple-producer-3.txt)
 
 ### Test 3: Single producer and consumer throughput.
 
