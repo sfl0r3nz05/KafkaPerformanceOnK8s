@@ -6,11 +6,11 @@ data:
       echo ""
       echo $i
       kafka-producer-perf-test \
-        --topic ssl-perf-test \
+        --topic ssl-producer \
         --num-records $((10*$i))\
         --record-size 1000\
         --throughput $i \
-        --producer.config $CONFIG_PATH \
+        --producer.config /etc/kafka/producer.properties \
         --producer-props acks=all \
         bootstrap.servers=$BOOTSTRAP_SERVERS \
         buffer.memory=67108864 \
@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
         - name: kafka-client
-          image: confluentinc/cp-server:7.2.1
+          image: confluentinc/cp-server:7.0.1
           env:
             - name: BOOTSTRAP_SERVERS
               value: PLAINTEXT://confluentinc-cp-kafka:9092
@@ -48,6 +48,10 @@ spec:
               value: "confluentinc-cp-zookeeper:2181"
             - name: KAFKA_ADVERTISED_LISTENERS
               value: PLAINTEXT://confluentinc-cp-zookeeper:5556
+          command:
+            - sh
+            - -c
+            - "/script/perf-script.sh"
           resources:
             limits:
               cpu: '1'
@@ -55,4 +59,12 @@ spec:
             requests:
               cpu: '1'
               memory: 1Gi
+          volumeMounts:
+            - mountPath: /script
+              name: kafka-perf-script
       restartPolicy: Never
+      volumes:
+      - name: kafka-perf-script
+        configMap:
+          name: kafka-single-producer-perf-script
+          defaultMode: 0555
