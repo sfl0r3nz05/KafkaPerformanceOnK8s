@@ -83,15 +83,17 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl apply -f single-producer.yaml -n kafka
     ```
 
-2. Collect infromation
+2. Collect information
 
     ```console
-    $producer=$(kubectl get pods -n kafka --selector=job-name=kafka-single-producer-client --output=jsonpath='{.items[*].metadata.name}')
+    producer=$(kubectl get pods -n kafka --selector=job-name=kafka-single-producer-client --output=jsonpath='{.items[*].metadata.name}')
     ```
 
     ```console
     kubectl logs -f $producer -n kafka
     ```
+
+3. Results: [Test Single Producer](./ExperimentResults/single-producer.txt)
 
 ### Test 2: Multiple producer throughput using TLS.
 
