@@ -95,7 +95,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl logs -f $producer -n kafka
     ```
 
-4. Results of: [Test Single Producer](./ExperimentResults/single-producer.txt)
+4. Results of: [Test Single Producer](./ExperimentResults/single-producer.txt).
 
 ### Test 2: Multiple producer throughput using TLS.
 
@@ -133,7 +133,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl logs -f $producer3 -n kafka
     ```
 
-4. Results of: [Multiple Producer 1](./ExperimentResults/multiple-producer-1.txt), [Multiple Producer 2](./ExperimentResults/multiple-producer-2.txt) and [Test Multiple Producer 3](./ExperimentResults/multiple-producer-3.txt)
+4. Results of: [Multiple Producer 1](./ExperimentResults/multiple-producer-1.txt), [Multiple Producer 2](./ExperimentResults/multiple-producer-2.txt) and [Test Multiple Producer 3](./ExperimentResults/multiple-producer-3.txt).
 
 ### Test 3: Single producer and consumer throughput.
 
@@ -152,22 +152,32 @@ It is possible to create multiple scenarios considering the variable load, messa
 3. Collect information of consumer
 
     ```console
-    $consumer=$(kubectl get pods -n kafka --selector=job-name=kafka-consumer-client --output=jsonpath='{.items[*].metadata.name}')
+    consumer=$(kubectl get pods -n kafka --selector=job-name=kafka-consumer-client --output=jsonpath='{.items[*].metadata.name}')
     ```
+
+4. Visualize information of consumer
 
     ```console
     kubectl logs -f $consumer -n kafka
     ```
 
-4. Collect information of producer
+5. Collect information of producer
 
     ```console
-    $producer=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-single --output=jsonpath='{.items[*].metadata.name}')
+    producer=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-single --output=jsonpath='{.items[*].metadata.name}')
     ```
 
     ```console
     kubectl logs -f $producer -n kafka
     ```
+
+6. Visualize information of consumer
+
+    ```console
+    kubectl logs -f $producer -n kafka
+    ```
+
+7. Results of: [Single Producer](./ExperimentResults/single-producer-to-consumer.txt), [Single Consumer](./ExperimentResults/single-consumer-to-producer.txt)
 
 ### Test 4: Multiple producer and single consumer throughput.
 
@@ -186,7 +196,7 @@ It is possible to create multiple scenarios considering the variable load, messa
 3. Collect information of consumer
 
     ```console
-    $consumer=$(kubectl get pods -n kafka --selector=job-name=kafka-consumer-fixed-single --output=jsonpath='{.items[*].metadata.name}')
+    consumer=$(kubectl get pods -n kafka --selector=job-name=kafka-consumer-fixed-single --output=jsonpath='{.items[*].metadata.name}')
     ```
 
     ```console
@@ -196,7 +206,7 @@ It is possible to create multiple scenarios considering the variable load, messa
 4. Collect information of producers
 
     ```console
-    $producers=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-multiple --output=jsonpath='{.items[*].metadata.name}')
+    producers=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-multiple --output=jsonpath='{.items[*].metadata.name}')
     ```
 
     ```console
@@ -214,7 +224,7 @@ It is possible to create multiple scenarios considering the variable load, messa
 2. Collect information of latency
 
     ```console
-    $e2e=$(kubectl get pods -n kafka --selector=job-name=kafka-e2e-client --output=jsonpath='{.items[*].metadata.name}')
+    e2e=$(kubectl get pods -n kafka --selector=job-name=kafka-e2e-client --output=jsonpath='{.items[*].metadata.name}')
     ```
 
     ```console
