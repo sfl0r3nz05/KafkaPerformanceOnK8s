@@ -9,14 +9,14 @@ metadata:
 spec:
   containers:
   - name: kafka-client
-    image: confluentinc/cp-server:7.2.2.amd64
+    image: confluentinc/cp-server:7.0.1
     command:
       - sh
       - -c
       - "exec tail -f /dev/null"
     env:
       - name: BOOTSTRAP_SERVERS
-        value: PLAINTEXT://my-cluster-kafka-bootstrap:9092
+        value: PLAINTEXT://confluentinc-cp-kafka:9092
     resources:
         limits:
           cpu: '1'
