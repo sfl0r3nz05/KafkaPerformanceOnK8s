@@ -255,7 +255,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl logs -f $e2e -n kafka
     ```
 
-4. Results of: [End to End Latency](./ExperimentResults/e2e.txt)
+4. Results of: [End to End Latency](./ExperimentResults/e2e.txt).
 
 ## Troubleshootings
 
