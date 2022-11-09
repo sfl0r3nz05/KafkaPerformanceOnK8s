@@ -233,7 +233,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     kubectl logs -f $producers3 -n kafka
     ```
 
-7. Results of: [Single Consumer](./ExperimentResults/multiple-producer-1-to-single-consumer.txt), [Multiple Producer 1](./ExperimentResults/ExperimentResults/multiple-producer-2-to-single-consumer.txt), [Multiple Producer 2](./ExperimentResults/), [Multiple Producer 3](./ExperimentResults/).
+7. Results of: [Single Consumer](./ExperimentResults/), [Multiple Producer 1](./ExperimentResults/multiple-producer-1-to-single-consumer.txt), [Multiple Producer 2](./ExperimentResults/multiple-producer-2-to-single-consumer.txt), [Multiple Producer 3](./ExperimentResults/).
 
 ### Test 5: End to End Latency.
 
