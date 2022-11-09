@@ -249,9 +249,13 @@ It is possible to create multiple scenarios considering the variable load, messa
     e2e=$(kubectl get pods -n kafka --selector=job-name=kafka-e2e-client --output=jsonpath='{.items[*].metadata.name}')
     ```
 
+3. Visualize logs for end to end communication:
+
     ```console
     kubectl logs -f $e2e -n kafka
     ```
+
+4. Results of: [End to End](./ExperimentResults/e2e.txt)
 
 ## Troubleshootings
 
