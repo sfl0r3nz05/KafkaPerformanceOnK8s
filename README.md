@@ -89,7 +89,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     producer=$(kubectl get pods -n kafka --selector=job-name=kafka-single-producer-client --output=jsonpath='{.items[0].metadata.name}')
     ```
 
-3. Visualize logs
+3. Visualize logs of producer
 
     ```console
     kubectl logs -f $producer -n kafka
@@ -119,7 +119,7 @@ It is possible to create multiple scenarios considering the variable load, messa
     producer3=$(kubectl get pods -n kafka --selector=job-name=kafka-multiple-producer-client --output=jsonpath='{.items[2].metadata.n$    
     ```
 
-3. Visualize logs
+3. Visualize logs producers
 
     ```console
     kubectl logs -f $producer1 -n kafka
@@ -199,19 +199,41 @@ It is possible to create multiple scenarios considering the variable load, messa
     consumer=$(kubectl get pods -n kafka --selector=job-name=kafka-consumer-fixed-single --output=jsonpath='{.items[*].metadata.name}')
     ```
 
+4. Visualize logs of consumer
+
     ```console
     kubectl logs -f $consumer -n kafka
     ```
 
-4. Collect information of producers
+5. Collect information of the 3 producers
 
     ```console
-    producers=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-multiple --output=jsonpath='{.items[*].metadata.name}')
+    producers1=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-multiple --output=jsonpath='{.items[0].metadata.name}')
     ```
 
     ```console
-    kubectl logs -f $producers -n kafka
+    producers2=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-multiple --output=jsonpath='{.items[1].metadata.name}')
     ```
+
+    ```console
+    producers3=$(kubectl get pods -n kafka --selector=job-name=kafka-producer-fixed-multiple --output=jsonpath='{.items[2].metadata.name}')
+    ```
+
+6. Visualize logs of producers
+
+    ```console
+    kubectl logs -f $producers1 -n kafka
+    ```
+
+    ```console
+    kubectl logs -f $producers2 -n kafka
+    ```
+
+    ```console
+    kubectl logs -f $producers3 -n kafka
+    ```
+
+7. Results of: [Single Consumer](./ExperimentResults/multiple-producer-1-to-single-consumer.txt), [Multiple Producer 1](./ExperimentResults/ExperimentResults/multiple-producer-2-to-single-consumer.txt), [Multiple Producer 2](./ExperimentResults/), [Multiple Producer 3](./ExperimentResults/).
 
 ### Test 5: End to End Latency.
 
