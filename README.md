@@ -13,11 +13,17 @@
 
 > This repo is based on the contribution proposed by [im-pratham](https://github.com/im-pratham) in this [medium article](https://towardsdev.com/performance-testing-your-kubernetes-kafka-cluster-95f6e7d8dfc5).
 
-## Deploy a demo cluster
+## Prerequisites
 
-1. Install [kubectl](./documentation/kubectl.md)
-2. Install [minikube](./documentation/minikube.md)
-3. Install [helm](./)
+1. Deploy the cluster:
+   1. [Test cluster installation (*for demo purposes*)](./documentation/demo_cluster.md)
+
+   2. [Deployment of K8s Cluster on LXC based on Ansible (*for production purposes*)](https://github.com/sfl0r3nz05/BaseImageClusterK8sOnLXC.git)
+
+2. Install requirements:
+   1. [Helm chart installation](./documentation/install_helm.md)
+   2. [Docker installation](https://docs.docker.com/engine/install/ubuntu/)
+   3. [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
 
 ## Deploy a kafka env based on k8s
 
@@ -38,6 +44,8 @@
     ```console
     cd ./cp-helm-charts
     ```
+
+    > **Note** If the deployed cluster is K8s the `values.yml` file located in the root of the `cp-helm-charts` folder must be changed to [this one](./values.yaml).
 
 4. Deploy Kafka cluster
 
