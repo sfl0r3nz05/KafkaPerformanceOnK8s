@@ -45,7 +45,7 @@
     cd ./cp-helm-charts
     ```
 
-    > **Note** If the deployed cluster is K8s the `values.yml` file located in the root of the `cp-helm-charts` folder must be changed to [this one](./values.yaml).
+    > **Note** If the deployed cluster is K8s the `values.yaml` file located in the root of the `cp-helm-charts` folder must be changed to [this one](./values.yaml).
 
 4. Deploy Kafka cluster
 
