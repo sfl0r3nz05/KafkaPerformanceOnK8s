@@ -16,7 +16,7 @@
 ## Prerequisites
 
 1. Deploy the cluster:
-   1. [Test cluster installation (*for demo purposes*)](./documentation/demo_cluster.md)
+   1. [Test cluster installation (*for demo purposes*)](./documentation/minikube.md)
 
    2. [Deployment of K8s Cluster on LXC based on Ansible (*for production purposes*)](https://github.com/sfl0r3nz05/BaseImageClusterK8sOnLXC.git)
 
