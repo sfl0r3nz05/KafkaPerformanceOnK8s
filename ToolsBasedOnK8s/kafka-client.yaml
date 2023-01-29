@@ -16,7 +16,7 @@ spec:
       - "exec tail -f /dev/null"
     env:
       - name: BOOTSTRAP_SERVERS
-        value: PLAINTEXT://confluentinc-cp-kafka:9092
+        value: PLAINTEXT://kafka-0-external:31090
     resources:
         limits:
           cpu: '1'
