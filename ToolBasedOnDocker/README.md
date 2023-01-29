@@ -1,6 +1,6 @@
 # Performance test based on a Docker Tool
 
-| ![NodePort](https://user-images.githubusercontent.com/6643905/215356134-656ad456-dec0-4682-8ca1-5f3fcf8f196d.PNG) | ![NodePort](https://user-images.githubusercontent.com/6643905/215356134-656ad456-dec0-4682-8ca1-5f3fcf8f196d.PNG) |
+| ![NodePort](https://user-images.githubusercontent.com/6643905/215356134-656ad456-dec0-4682-8ca1-5f3fcf8f196d.PNG) | ![LoadBalancer](https://user-images.githubusercontent.com/6643905/215358725-68f9d3a8-2f3e-441f-8e47-928d72e2669c.PNG) |
 |-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | **Service type:** NodePort                                                                                        | **Service type:** LoadBalancer                                                                                    |
 
