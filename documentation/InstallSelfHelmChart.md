@@ -22,7 +22,7 @@
    replicas: 1
    ```
 
-> **Note:** For environments based on Minikube.
+> **Note:** For environments based on Minikube using NodePort.
 
    - Enable external access:
 
@@ -45,7 +45,7 @@
        PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
    ```
 
-> **Note:** For environments based on K8s.
+> **Note:** For environments based on K8s using LoadBalancer.
 
    - Enable external access:
 
