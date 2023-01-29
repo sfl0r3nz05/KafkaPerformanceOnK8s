@@ -1,8 +1,5 @@
 # Performance test based on a Docker Tool
 
-![NodePort](https://user-images.githubusercontent.com/6643905/215356134-656ad456-dec0-4682-8ca1-5f3fcf8f196d.PNG)
-
-
 1. Create a topic. E.g:
 
    ```console   
