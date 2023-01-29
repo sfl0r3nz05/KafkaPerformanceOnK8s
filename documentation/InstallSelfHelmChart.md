@@ -74,7 +74,7 @@
    kubectl create namespace kafka
    ```
 
-5. Update the kafka helm repository
+4. Update the `kafka` `helm repository` including the `zookeeper` `helm chart` inside the `kafka` folder:
 
    > **Note:** Zookeeper is included in the Kafka helmchart in step number 3. The details of the requirement can be found in the `requirements.yaml` file placed in `~/PerformanceNetworkToolOnK8s/charts/kafka/requirements.yaml`.
 
@@ -83,7 +83,7 @@
    helm dependency update
    ```
 
-6. Install Kafka and Zookeeper cluster from helm chart
+5. Install Kafka and Zookeeper cluster from helm chart
 
    ```console
    helm install kafka . -n kafka
