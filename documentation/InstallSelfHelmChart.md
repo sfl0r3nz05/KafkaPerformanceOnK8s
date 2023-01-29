@@ -40,10 +40,9 @@
    ```console
    configurationOverrides:
      "advertised.listeners": EXTERNAL://3.94.152.36:31090
-   ```
-
-   ```console
+     ...
      "listener.security.protocol.map": |-
+       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
    ```
 
 > **Note:** For environments based on K8s.
@@ -64,10 +63,9 @@
    ```console
    configurationOverrides:
      "advertised.listeners": EXTERNAL://10.5.0.102:31090
-   ```
-
-   ```console
+     ...
      "listener.security.protocol.map": |-
+       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
    ```
 
 3. Create namespace
