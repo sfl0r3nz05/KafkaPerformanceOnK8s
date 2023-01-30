@@ -28,3 +28,6 @@
 ## To do
 
 1. Testing a deployment based on cp-helm-charts with the Docker tool.
+2. Improve the demonstration (videos published on youtube) of Docker-based performance tests for both NodePort and LoadBalancer service types.
+3. Create an image to better understanding of the performance test based on K8s Jobs.
+4. Create a demonstration video for the performance test based on K8s Jobs.
