@@ -21,8 +21,8 @@
 ## Performance Kafka Test
 
 1. [Performance test based on a Docker Tool](./ToolBasedOnDocker/README.md)
-   - [Demonstration video using NodePort as service](https://youtu.be/vysTHRjRQr4)
-   - [Demonstration video using LoadBalancer as service]()
+   - [Demonstration video using NodePort as service type](https://youtu.be/vysTHRjRQr4)
+   - [Demonstration video using LoadBalancer as service type](https://youtu.be/0MjyktT1ouQ)
 2. [Performance test based on K8s Jobs](./ToolsBasedOnK8s/README.md)
 
 ## To do
