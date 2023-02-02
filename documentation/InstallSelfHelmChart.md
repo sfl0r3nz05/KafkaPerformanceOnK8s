@@ -22,51 +22,51 @@
    replicas: 1
    ```
 
-> **Note:** For environments based on Minikube using NodePort.
+	> **Note:** For environments based on Minikube using NodePort.
 
-   - Enable external access:
+	   - Enable external access:
 
-   ```console
-   external:
-     enabled: true
-     type: NodePort
-   dns:
-     useInternal: false
-     useExternal: false
-   ```
+	   ```console
+	   external:
+	     enabled: true
+	     type: NodePort
+	   dns:
+	     useInternal: false
+	     useExternal: false
+	   ```
 
-   - Configure the external access, modifying the external IP address. E.g.: 3.94.152.36:
+	   - Configure the external access, modifying the external IP address. E.g.: 3.94.152.36:
 
-   ```console
-   configurationOverrides:
-     "advertised.listeners": EXTERNAL://3.94.152.36:31090
-     ...
-     "listener.security.protocol.map": |-
-       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
-   ```
+	   ```console
+	   configurationOverrides:
+	     "advertised.listeners": EXTERNAL://3.94.152.36:31090
+	     ...
+	     "listener.security.protocol.map": |-
+	       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+	   ```
 
-> **Note:** For environments based on K8s using LoadBalancer.
+	> **Note:** For environments based on K8s using LoadBalancer.
 
-   - Enable external access:
+	   - Enable external access:
 
-   ```console
-   external:
-     enabled: true
-     type: LoadBalancer
-   dns:
-     useInternal: false
-     useExternal: false
-   ```
+	   ```console
+	   external:
+	     enabled: true
+	     type: LoadBalancer
+	   dns:
+	     useInternal: false
+	     useExternal: false
+	   ```
 
-   - Configure the external access, modifying the external IP address. E.g.: 10.5.0.102:
+	   - Configure the external access, modifying the external IP address. E.g.: 10.5.0.102:
 
-   ```console
-   configurationOverrides:
-     "advertised.listeners": EXTERNAL://10.5.0.102:31090
-     ...
-     "listener.security.protocol.map": |-
-       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
-   ```
+	   ```console
+	   configurationOverrides:
+	     "advertised.listeners": EXTERNAL://10.5.0.102:31090
+	     ...
+	     "listener.security.protocol.map": |-
+	       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+	   ```
 
 3. Create namespace
 
