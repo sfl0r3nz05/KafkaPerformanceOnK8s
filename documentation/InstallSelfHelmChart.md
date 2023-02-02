@@ -36,6 +36,7 @@
 	   ```
 
     - Configure the external access, modifying the external IP address. E.g.: 3.94.152.36:
+	- The IP to be used can be seen in the figure below left.
 
 	   ```console
 	   configurationOverrides:
@@ -58,7 +59,8 @@
 	     useExternal: false
 	   ```
 
-	   - Configure the external access, modifying the external IP address. E.g.: 10.5.0.102:
+    - Configure the external access, modifying the external IP address. E.g.: 10.5.0.102:
+	- The IP to be used can be seen in the figure below left.
 
 	   ```console
 	   configurationOverrides:
