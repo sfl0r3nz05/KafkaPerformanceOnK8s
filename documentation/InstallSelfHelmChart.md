@@ -70,7 +70,7 @@
 	       PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
 	   ```
 
-	| ![NodePort](https://user-images.githubusercontent.com/6643905/216343545-64a965c2-f79c-4c1e-8778-a23f0aaa1733.png) | ![NodePort](https://user-images.githubusercontent.com/6643905/216343551-ef47bf13-0033-46c6-9062-c1cd7c7cc7d8.png) |
+	| <img src="https://user-images.githubusercontent.com/6643905/216343545-64a965c2-f79c-4c1e-8778-a23f0aaa1733.png"  width=60% height=60%> | <img src="https://user-images.githubusercontent.com/6643905/216343551-ef47bf13-0033-46c6-9062-c1cd7c7cc7d8.png"  width=60% height=60%> |
 	|-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 	| **Service type:** NodePort                                                                                        | **Service type:** LoadBalancer                                                                                    |
 
