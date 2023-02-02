@@ -24,7 +24,7 @@
 
 	> **Note:** For environments based on Minikube using NodePort.
 
-          - Enable external access:
+        - Enable external access:
 
 	   ```console
 	   external:
@@ -35,7 +35,7 @@
 	     useExternal: false
 	   ```
 
-          - Configure the external access, modifying the external IP address. E.g.: 3.94.152.36:
+        - Configure the external access, modifying the external IP address. E.g.: 3.94.152.36:
 
 	   ```console
 	   configurationOverrides:
@@ -47,7 +47,7 @@
 
 	> **Note:** For environments based on K8s using LoadBalancer.
 
-	   - Enable external access:
+	- Enable external access:
 
 	   ```console
 	   external:
