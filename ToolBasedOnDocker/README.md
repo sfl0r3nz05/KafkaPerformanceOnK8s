@@ -4,11 +4,11 @@
 
 - Performance tests may be performed for the following architectures.
 
-| ![NodePort](https://user-images.githubusercontent.com/6643905/215356134-656ad456-dec0-4682-8ca1-5f3fcf8f196d.PNG) | ![LoadBalancer](https://user-images.githubusercontent.com/6643905/218860678-08ff540e-f3d6-44ba-8ae5-a3ca28570b7b.png) |
+| ![NodePort](https://user-images.githubusercontent.com/6643905/218864084-3d53faa9-1d92-427a-a077-eca59fc2da5d.png) | ![LoadBalancer](https://user-images.githubusercontent.com/6643905/218860678-08ff540e-f3d6-44ba-8ae5-a3ca28570b7b.png) |
 |-------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
 | **Service type:** NodePort                                                                                        | **Service type:** LoadBalancer                                                                                    |
 
-## Basic commands
+## Basic commands to performance test
 
 - In each case, the IP addresses and ports of the `bootstrap-server` must be substituted according to each architecture.
 
@@ -45,7 +45,7 @@
 2. Variation in the number of messages (--messages) sent in correspondence with the number of records consumed (--num-records). E.g.:
 
    ```console
-   docker run -it --rm confluentinc/cp-kafka:latest kafka-consumer-perf-test --topic ssl-perf-test --broker-list 10.98.6.161:31090 --messages 1000
-
    docker run -it --rm confluentinc/cp-kafka:latest kafka-producer-perf-test --topic ssl-perf-test --throughput 40000 --num-records 1000 --record-size 1024 --producer-props acks=all bootstrap.servers=10.98.6.161:31090
+
+   docker run -it --rm confluentinc/cp-kafka:latest kafka-consumer-perf-test --topic ssl-perf-test --broker-list 10.98.6.161:31090 --messages 1000
    ```
